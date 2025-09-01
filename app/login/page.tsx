@@ -45,23 +45,13 @@ export default function LoginPage() {
 
   return (
     <div className="container py-16">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="hidden lg:block"
-        >
-          <h1 className="text-4xl font-bold mb-4">Welcome Back</h1>
-          <p className="text-muted-foreground">
-            Sign in to access your dashboard and manage your content.
-          </p>
-        </motion.div>
+      <div className="flex justify-center">
 
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
         >
-          <Card className="w-full max-w-md mx-auto">
+          <Card className="w-full max-w-md mx-auto min-w-[300px]">
             <CardHeader>
               <CardTitle>Login</CardTitle>
             </CardHeader>
@@ -102,7 +92,7 @@ export default function LoginPage() {
                 <Button type="submit" className="w-full" disabled={loading}>
                   {loading ? "Signing in..." : "Sign In"}
                 </Button>
-                <div className="text-center space-y-2">
+                {/* <div className="text-center space-y-2">
                   <Link href="/forgot-password" className="text-sm text-blue-600 hover:underline">
                     Forgot password?
                   </Link>
@@ -112,7 +102,7 @@ export default function LoginPage() {
                       Sign up
                     </Link>
                   </div>
-                </div>
+                </div> */}
               </form>
             </CardContent>
           </Card>

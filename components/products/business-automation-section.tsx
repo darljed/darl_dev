@@ -7,6 +7,9 @@ import Link from "next/link";
 
 export function BusinessAutomationSection() {
   return (
+    <>
+    <div style={{ backgroundImage: 'url(/products/business-suite.webp)'}} className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-lg mb-8 bg-cover bg-center bg-no-repeat">
+    </div>
     <section className="w-full py-16 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
       <div className="max-w-7xl mx-auto px-6 text-center">
         {/* Heading */}
@@ -69,5 +72,6 @@ export function BusinessAutomationSection() {
         </Link>
       </div>
     </section>
+    </>
   );
 }

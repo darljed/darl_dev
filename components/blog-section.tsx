@@ -1,12 +1,13 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ChevronLeft, ChevronRight } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
+import { ChevronLeft, ChevronRight, FolderOpen, Rocket } from "lucide-react"
 import Link from "next/link"
 import { toast } from "sonner"
+import useEmblaCarousel from "embla-carousel-react"
+import Autoplay from "embla-carousel-autoplay"
 
 interface Blog {
   id: string
@@ -18,8 +19,12 @@ interface Blog {
 
 export function BlogSection() {
   const [blogs, setBlogs] = useState<Blog[]>([])
-  const [currentIndex, setCurrentIndex] = useState(0)
   const [loading, setLoading] = useState(true)
+  
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: "start" },
+    [Autoplay({ delay: 4000, stopOnInteraction: true })]
+  )
 
   useEffect(() => {
     fetchBlogs()
@@ -40,19 +45,13 @@ export function BlogSection() {
     }
   }
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => {
-      const next = prev + 3
-      return next >= blogs.length ? 0 : next
-    })
-  }
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev()
+  }, [emblaApi])
 
-  const prevSlide = () => {
-    setCurrentIndex((prev) => {
-      const next = prev - 3
-      return next < 0 ? Math.max(0, blogs.length - 3) : next
-    })
-  }
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext()
+  }, [emblaApi])
 
   if (loading) {
     return (
@@ -74,8 +73,10 @@ export function BlogSection() {
               Stay updated with our latest insights and articles
             </p>
           </div>
-          <div className="text-center py-8">
-            <p className="text-muted-foreground">No blogs available yet.</p>
+          <div className="text-center py-8 border rounded-md max-w-2xl m-auto">
+            <p className="text-muted-foreground text-center flex justify-center gap-4">
+              <FolderOpen /> No blogs available yet.
+            </p>
           </div>
         </div>
       </section>
@@ -83,7 +84,7 @@ export function BlogSection() {
   }
 
   return (
-    <section className="py-20 bg-background">
+    <section id="blogs" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">Latest Blogs</h2>
@@ -93,31 +94,22 @@ export function BlogSection() {
         </div>
         
         <div className="relative">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-end mb-4">
             <div className="flex gap-2">
-              <Button variant="outline" size="icon" onClick={prevSlide}>
+              <Button variant="outline" size="icon" onClick={scrollPrev} type="button" aria-label="Previous blogs">
                 <ChevronLeft className="h-4 w-4" />
               </Button>
-              <Button variant="outline" size="icon" onClick={nextSlide}>
+              <Button variant="outline" size="icon" onClick={scrollNext} type="button" aria-label="Next blogs">
                 <ChevronRight className="h-4 w-4" />
               </Button>
             </div>
           </div>
           
-          <div className="overflow-hidden">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0, x: 300 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -300 }}
-                transition={{ duration: 0.3 }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-              >
-                {blogs.slice(currentIndex, currentIndex + 3).concat(
-                  currentIndex + 3 > blogs.length ? blogs.slice(0, (currentIndex + 3) % blogs.length) : []
-                ).map((blog) => (
-                  <Card key={blog.id} className="overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full">
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex">
+              {blogs.map((blog) => (
+                <div key={blog.id} className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] pl-4">
+                  <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full mr-4">
                     {blog.bannerImage && (
                       <div className="aspect-video overflow-hidden">
                         <img
@@ -144,23 +136,9 @@ export function BlogSection() {
                       </div>
                     </CardContent>
                   </Card>
-                ))}
-              </motion.div>
-            </AnimatePresence>
-          </div>
-          
-          <div className="flex justify-center mt-6 gap-2">
-            {Array.from({ length: Math.ceil(blogs.length / 3) }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index * 3)}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  Math.floor(currentIndex / 3) === index
-                    ? "bg-primary"
-                    : "bg-muted-foreground/30"
-                }`}
-              />
-            ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

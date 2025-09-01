@@ -44,8 +44,6 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
             <p className="text-muted-foreground">Published on {new Date(post.publishedAt).toLocaleDateString()}</p>
           </header>
           
-          <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-lg mb-8"></div>
-          
           {params.slug === 'ai-chatbot-platform' && <AIChatbotSection />}
           {params.slug === 'business-automation-suite' && <BusinessAutomationSection />}
           {params.slug === 'data-analytics-dashboard' && <DataAnalyticsSection />}

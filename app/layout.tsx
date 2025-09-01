@@ -6,11 +6,12 @@ import { SessionProvider } from '@/components/session-provider'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { Toaster } from 'sonner'
+import { ConditionalFooter } from '@/components/conditional-footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: "Darl | Your Shortcut to Smart Solutions",
+  title: "Darl | Building Solutions That Make a Difference",
   description:
     "Darl helps small businesses and professionals embrace digital transformation with web development, automation, AI integration, and data analytics. Start your digital journey today.",
   keywords: [
@@ -25,9 +26,9 @@ export const metadata: Metadata = {
     "automation for small businesses"
   ],
   openGraph: {
-    title: "Darl | Your Shortcut to Smart Solutions",
+    title: "Darl | Building Solutions That Make a Difference",
     description:
-      "Helping small businesses and professionals thrive with automation, AI, and modern web solutions. Get started with Darl today.",
+      "Modern Tech. Creative Minds. Smarter Solutions. Get started with Darl today.",
     url: "https://darl.dev",
     siteName: "Darl",
     images: [
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
         url: "https://darl.dev/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Darl - Your Shortcut to Smart Solutions",
+        alt: "Darl - Building Solutions That Make a Difference",
       },
     ],
     locale: "en_US",
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Darl | Your Shortcut to Smart Solutions",
+    title: "Darl | Building Solutions That Make a Difference",
     description:
       "Empowering small businesses with automation, AI, and modern web solutions. Start your journey with Darl today.",
     images: ["https://darl.dev/og-image.png"],
@@ -74,10 +75,10 @@ export default function RootLayout({
           <SessionProvider>
             <div className="min-h-screen flex flex-col">
               <Navbar />
-              <main className="flex-1 mt-10">
+              <main className="flex-1">
                 {children}
               </main>
-              <Footer />
+              <ConditionalFooter />
             </div>
             <Toaster richColors position="top-right" />
           </SessionProvider>

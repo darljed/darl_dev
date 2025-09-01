@@ -7,24 +7,24 @@ const products = [
     id: "ai-chatbot-platform",
     title: "AI Chatbot Platform",
     description: "Intelligent conversational AI that helps businesses automate customer support and engagement.",
-    image: "/api/placeholder/400/250"
+    image: "/products/ai-chat-bot.jpg"
   },
   {
     id: "business-automation-suite",
     title: "Business Automation Suite",
     description: "Complete workflow automation solution for small to medium businesses.",
-    image: "/api/placeholder/400/250"
+    image: "/products/business-suite.webp"
   },
   {
     id: "data-analytics-dashboard",
     title: "Data Analytics Dashboard",
     description: "Real-time business intelligence and analytics platform with customizable dashboards.",
-    image: "/api/placeholder/400/250"
+    image: "/products/data-analytics.webp"
   }
 ]
 
 const clients = [
-  "TechCorp", "InnovateLab", "DataFlow Inc", "SmartBiz", "AutomateNow", "WebSolutions", "AIFirst", "CloudTech"
+  "Christ-Driven Christian Fellowship Inc.", "CoorDIY", "Bitsly I.T. Solutions"
 ]
 
 export function ProductsSection() {
@@ -38,10 +38,10 @@ export function ProductsSection() {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 ">
           {products.map((product) => (
             <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
-              <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900"></div>
+              <div style={{ backgroundImage: `url(${product.image})` }} className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 bg-cover bg-no-repeat bg-center"></div>
               <CardHeader>
                 <CardTitle>{product.title}</CardTitle>
                 <CardDescription>{product.description}</CardDescription>
@@ -56,7 +56,7 @@ export function ProductsSection() {
         </div>
 
         <div className="text-center mb-8">
-          <h3 className="text-2xl font-semibold mb-8">Trusted by Leading Companies</h3>
+          <h3 className="text-2xl font-semibold mb-8">Trusted by our Partners</h3>
         </div>
         
         <div className="overflow-hidden">

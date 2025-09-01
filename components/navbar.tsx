@@ -2,22 +2,20 @@
 
 import { useState, useEffect } from "react"
 import { useRouter, usePathname } from "next/navigation"
+import { useSession, signOut } from "next-auth/react"
 import Image from "next/image"
 import Link from "next/link"
-import { ThemeToggle } from "./theme-toggle"
+import { Button } from "@/components/ui/button"
+import { ThemeToggle } from "@/components/theme-toggle"
+import { motion } from "framer-motion"
+import { canAccessAdmin } from "@/lib/permissions"
+import { Menu } from "lucide-react"
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const router = useRouter()
+  const { data: session } = useSession()
   const pathname = usePathname()
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  const router = useRouter()
+  const isAdminPanel = pathname?.startsWith('/admin')
 
   const handleNavigation = (sectionId: string) => {
     if (pathname === '/') {
@@ -28,32 +26,55 @@ export function Navbar() {
   }
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-md border-b transition-all duration-300">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" className="h-8">
-          <Image 
-            src={`/light/logo-long-light.png`}
-            alt="DarlDev" 
-            width={120} 
-            height={32}
-            className="h-8 w-auto dark:hidden"
-          />
-          <Image 
-            src={`/dark/logo-long-dark.png`}
-            alt="DarlDev" 
-            width={120} 
-            height={32}
-            className="h-8 w-auto hidden dark:block"
-          />
-        </Link>
-        <div className="hidden md:flex space-x-8">
-          <button onClick={() => handleNavigation("hero")} className="hover:text-primary transition-colors">Home</button>
-          <button onClick={() => handleNavigation("services")} className="hover:text-primary transition-colors">Services</button>
-          <button onClick={() => handleNavigation("products")} className="hover:text-primary transition-colors">Products</button>
-          <button onClick={() => handleNavigation("contact")} className="hover:text-primary transition-colors">Contact</button>
+    <motion.nav 
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+    >
+      <div className={`flex h-16 items-center justify-between ${isAdminPanel ? 'px-6' : 'container'}`}>
+        <div className="flex items-center gap-4">
+          {isAdminPanel && (
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={() => (window as any).toggleAdminSidebar?.()}
+            >
+              <Menu className="h-4 w-4" />
+            </Button>
+          )}
+          <Link href="/" className="h-8">
+            <Image 
+              src={`/light/logo-long-light.png`}
+              alt="DarlDev" 
+              width={120} 
+              height={32}
+              className="h-8 w-auto dark:hidden"
+            />
+            <Image 
+              src={`/dark/logo-long-dark.png`}
+              alt="DarlDev" 
+              width={120} 
+              height={32}
+              className="h-8 w-auto hidden dark:block"
+            />
+          </Link>
         </div>
-        <ThemeToggle />
+        
+        <div className="flex items-center gap-4">
+          {!isAdminPanel && (
+            <>
+              <div className="hidden md:flex space-x-8">
+                <button onClick={() => handleNavigation("hero")} className="hover:text-primary transition-colors">Home</button>
+                <button onClick={() => handleNavigation("services")} className="hover:text-primary transition-colors">Services</button>
+                <button onClick={() => handleNavigation("products")} className="hover:text-primary transition-colors">Products</button>
+                <Link href="/blogs" className="hover:text-primary transition-colors">Blogs</Link>
+                <button onClick={() => handleNavigation("contact")} className="hover:text-primary transition-colors">Contact</button>
+              </div>
+              <ThemeToggle />
+            </>
+          )}
+        </div>
       </div>
-    </nav>
+    </motion.nav>
   )
 }

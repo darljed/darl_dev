@@ -19,14 +19,14 @@ export function AdminDashboard() {
   }, [sidebarOpen])
 
   return (
-    <div className="flex h-full relative">
+    <div className="flex h-screen relative">
       {sidebarOpen && (
         <>
           <div 
             className="fixed inset-0 bg-black/50 z-40 lg:hidden" 
             onClick={() => setSidebarOpen(false)}
           />
-          <div className="fixed lg:relative z-50 h-screen top-0">
+          <div className="fixed lg:sticky lg:top-0 z-50 h-screen top-0">
             <AdminSidebar 
               activeTab={activeTab} 
               setActiveTab={setActiveTab}
