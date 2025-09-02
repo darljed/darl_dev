@@ -16,6 +16,7 @@
     "postinstall": "prisma generate",
     "vercel-build": "npm install --legacy-peer-deps && prisma migrate deploy && next build"
   },
+
   "dependencies": {
     "@aws-sdk/client-s3": "^3.879.0",
     "@next-auth/prisma-adapter": "^1.0.7",
@@ -44,6 +45,7 @@
     "next-swagger-doc": "^0.4.0",
     "next-themes": "^0.2.1",
     "nodemailer": "^6.9.7",
+    "prisma": "^5.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.48.2",
@@ -51,6 +53,7 @@
     "swagger-ui-react": "^5.10.5",
     "tailwind-merge": "^2.2.0",
     "tailwindcss-animate": "^1.0.7",
+    "tsx": "^4.6.2",
     "zod": "^3.22.4"
   },
   "devDependencies": {
@@ -64,9 +67,7 @@
     "eslint": "^8.56.0",
     "eslint-config-next": "15.0.3",
     "postcss": "^8.4.32",
-    "prisma": "^5.7.1",
     "tailwindcss": "^3.4.0",
-    "tsx": "^4.6.2",
     "typescript": "^5.3.3"
   },
   "overrides": {
