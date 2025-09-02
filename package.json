@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma migrate deploy && next build",
+    "build": "prisma generate && prisma migrate deploy && next build",
     "start": "next start",
     "lint": "next lint",
     "db:push": "prisma db push",
@@ -13,7 +13,8 @@
     "db:seed": "tsx prisma/seed.ts",
     "db:reset": "prisma migrate reset --force && tsx prisma/seed.ts",
     "db:studio": "prisma studio",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "vercel-build": "npm install --legacy-peer-deps && prisma migrate deploy && next build"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.879.0",
@@ -67,5 +68,11 @@
     "tailwindcss": "^3.4.0",
     "tsx": "^4.6.2",
     "typescript": "^5.3.3"
+  },
+  "overrides": {
+    "@toast-ui/react-editor": {
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0"
+    }
   }
 }

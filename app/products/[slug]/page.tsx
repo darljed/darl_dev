@@ -21,8 +21,9 @@ const blogPosts = {
   }
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const post = blogPosts[params.slug as keyof typeof blogPosts]
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const post = blogPosts[slug as keyof typeof blogPosts]
   
   if (!post) {
     notFound()
@@ -44,9 +45,9 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
             <p className="text-muted-foreground">Published on {new Date(post.publishedAt).toLocaleDateString()}</p>
           </header>
           
-          {params.slug === 'ai-chatbot-platform' && <AIChatbotSection />}
-          {params.slug === 'business-automation-suite' && <BusinessAutomationSection />}
-          {params.slug === 'data-analytics-dashboard' && <DataAnalyticsSection />}
+          {slug === 'ai-chatbot-platform' && <AIChatbotSection />}
+          {slug === 'business-automation-suite' && <BusinessAutomationSection />}
+          {slug === 'data-analytics-dashboard' && <DataAnalyticsSection />}
         </article>
       </div>
     </div>

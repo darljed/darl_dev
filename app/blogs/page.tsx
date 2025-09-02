@@ -163,7 +163,7 @@ export default function BlogsPage() {
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-4">Our Blogs</h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl max-w-2xl mx-auto">
             Discover insights, tutorials, and stories from our team
           </p>
         </div>
@@ -246,7 +246,9 @@ export default function BlogsPage() {
           <div className="lg:w-3/4">
             {filteredBlogs.length === 0 ? (
               <div className="text-center py-12">
-                <p className="text-muted-foreground">No blogs found matching your criteria.</p>
+                <div className="h-40 border rounded-md flex justify-center items-center">
+                  <p className="text-muted-foreground">No blogs found matching your criteria.</p>
+                </div>
               </div>
             ) : (
               <>
