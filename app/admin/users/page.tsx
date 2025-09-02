@@ -1,8 +1,8 @@
 import { getServerSession } from "next-auth"
 import { redirect } from "next/navigation"
-import { authOptions } from "@/lib/auth"
-import { UserManager } from "@/components/user-manager"
-import { canAccessAdmin } from "@/lib/permissions"
+import { authOptions } from "../../../lib/auth"
+import { UserManager } from "../../../components/user-manager"
+import { canAccessAdmin } from "../../../lib/permissions"
 
 export default async function UsersPage() {
   const session = await getServerSession(authOptions)

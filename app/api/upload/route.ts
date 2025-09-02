@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from "next/server"
 import { writeFile } from "fs/promises"
 import { join } from "path"
 import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
-import { uploadToS3 } from "@/lib/s3"
+import { authOptions } from "../../../lib/auth"
+import { uploadToS3 } from "../../../lib/s3"
 
 export async function POST(request: NextRequest) {
   try {

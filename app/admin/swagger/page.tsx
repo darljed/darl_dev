@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth"
 import { redirect } from "next/navigation"
-import { authOptions } from "@/lib/auth"
-import { SwaggerUI } from "@/components/swagger-ui"
+import { authOptions } from "../../../lib/auth"
+import { SwaggerUI } from "../../../components/swagger-ui"
 
 export default async function SwaggerPage() {
   const session = await getServerSession(authOptions)

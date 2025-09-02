@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
-import { getBlogName, getBlogNamePlural } from "@/lib/blog-config"
+import { authOptions } from "../../../lib/auth"
+import { getBlogName, getBlogNamePlural } from "../../../lib/blog-config"
 
 const swaggerSpec = {
   openapi: "3.0.0",

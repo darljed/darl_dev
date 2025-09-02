@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server"
 import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
-import { prisma } from "@/lib/prisma"
-import { canViewStats } from "@/lib/permissions"
+import { authOptions } from "../../../lib/auth"
+import { prisma } from "../../../lib/prisma"
+import { canViewStats } from "../../../lib/permissions"
 
 export async function GET() {
   try {

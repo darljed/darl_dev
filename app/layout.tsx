@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { ThemeProvider } from '@/components/theme-provider'
-import { SessionProvider } from '@/components/session-provider'
-import { Navbar } from '@/components/navbar'
-import { Footer } from '@/components/footer'
+import { ThemeProvider } from '../components/theme-provider'
+import { SessionProvider } from '../components/session-provider'
+import { Navbar } from '../components/navbar'
+import { Footer } from '../components/footer'
 import { Toaster } from 'sonner'
-import { ConditionalFooter } from '@/components/conditional-footer'
+import { ConditionalFooter } from '../components/conditional-footer'
 
 const inter = Inter({ subsets: ['latin'] })
 

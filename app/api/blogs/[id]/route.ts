@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server"
 import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
-import { prisma } from "@/lib/prisma"
-import { canEditBlog, canDeleteBlog } from "@/lib/permissions"
-import { deleteImage } from "@/lib/file-utils"
-import { getBlogName } from "@/lib/blog-config"
+import { authOptions } from "../../../../lib/auth"
+import { prisma } from "../../../../lib/prisma"
+import { canEditBlog, canDeleteBlog } from "../../../../lib/permissions"
+import { deleteImage } from "../../../../lib/file-utils"
+import { getBlogName } from "../../../../lib/blog-config"
 
 export async function PUT(
   request: NextRequest,

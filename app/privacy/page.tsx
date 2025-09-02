@@ -1,6 +1,6 @@
 "use client"
 
-import { getBlogName } from "@/lib/blog-config"
+import { getBlogName } from "../../lib/blog-config"
 
 export default function PrivacyPage() {
   return (

@@ -1,10 +1,10 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+import { Button } from '../../../components/ui/button'
 import { ArrowLeft } from 'lucide-react'
-import { AIChatbotSection } from '@/components/products/ai-chatbot-section'
-import { BusinessAutomationSection } from '@/components/products/business-automation-section'
-import { DataAnalyticsSection } from '@/components/products/data-analytics-section'
+import { AIChatbotSection } from '../../../components/products/ai-chatbot-section'
+import { BusinessAutomationSection } from '../../../components/products/business-automation-section'
+import { DataAnalyticsSection } from '../../../components/products/data-analytics-section'
 
 const blogPosts = {
   "ai-chatbot-platform": {

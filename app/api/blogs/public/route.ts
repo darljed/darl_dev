@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
-import { prisma } from "@/lib/prisma"
-import { getBlogNamePlural } from "@/lib/blog-config"
+import { prisma } from "../../../../lib/prisma"
+import { getBlogNamePlural } from "../../../../lib/blog-config"
 
 export async function GET(request: Request) {
   try {
