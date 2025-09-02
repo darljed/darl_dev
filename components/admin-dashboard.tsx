@@ -1,10 +1,10 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { AdminSidebar } from "@/components/admin-sidebar"
-import { BlogManager } from "@/components/blog-manager"
-import { DashboardStats } from "@/components/dashboard-stats"
-import { UserManager } from "@/components/user-manager"
+import { AdminSidebar } from "./admin-sidebar"
+import { BlogManager } from "./blog-manager"
+import { DashboardStats } from "./dashboard-stats"
+import { UserManager } from "./user-manager"
 
 export function AdminDashboard() {
   const [activeTab, setActiveTab] = useState("dashboard")

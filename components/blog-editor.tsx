@@ -1,14 +1,14 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { RichTextEditor } from "@/components/rich-text-editor"
-import { ImageUpload } from "@/components/image-upload"
+import { Button } from "./ui/button"
+import { Input } from "./ui/input"
+import { Label } from "./ui/label"
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
+import { RichTextEditor } from "./rich-text-editor"
+import { ImageUpload } from "./image-upload"
 import { Save, X } from "lucide-react"
-import { getBlogName } from "@/lib/blog-config"
+import { getBlogName } from "../lib/blog-config"
 import { toast } from "sonner"
 
 interface BlogEditorProps {

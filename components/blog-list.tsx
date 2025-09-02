@@ -1,14 +1,14 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
+import { Button } from "./ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "./ui/alert-dialog"
 import { Edit, Trash2, Eye } from "lucide-react"
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { canDeleteBlog, canPublishBlog } from "@/lib/permissions"
-import { getBlogName, getBlogNamePlural } from "@/lib/blog-config"
+import { canDeleteBlog, canPublishBlog } from "../lib/permissions"
+import { getBlogName, getBlogNamePlural } from "../lib/blog-config"
 import { toast } from "sonner"
 
 interface BlogListProps {

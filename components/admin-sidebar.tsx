@@ -1,10 +1,10 @@
 "use client"
 
 import { LayoutDashboard, FileText, Users, LogOut } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Button } from "./ui/button"
 import { motion } from "framer-motion"
-import { getBlogNamePlural } from "@/lib/blog-config"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { getBlogNamePlural } from "../lib/blog-config"
+import { ThemeToggle } from "./theme-toggle"
 import { signOut, useSession } from "next-auth/react"
 
 interface AdminSidebarProps {

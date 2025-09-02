@@ -1,10 +1,10 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 import { FileText, Users, Eye } from "lucide-react"
 import { motion } from "framer-motion"
-import { getBlogName, getBlogNamePlural } from "@/lib/blog-config"
+import { getBlogName, getBlogNamePlural } from "../lib/blog-config"
 
 export function DashboardStats() {
   const [stats, setStats] = useState({

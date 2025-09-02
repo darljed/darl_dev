@@ -2,16 +2,16 @@
 
 import { useState, useEffect } from "react"
 import { useSession } from "next-auth/react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { BlogEditor } from "@/components/blog-editor"
-import { BlogList } from "@/components/blog-list"
+import { Button } from "./ui/button"
+import { Input } from "./ui/input"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
+import { BlogEditor } from "./blog-editor"
+import { BlogList } from "./blog-list"
 import { Plus, Search } from "lucide-react"
 import { toast } from "sonner"
 
 
-import { getBlogName, getBlogNamePlural } from "@/lib/blog-config"
+import { getBlogName, getBlogNamePlural } from "../lib/blog-config"
 
 export function BlogManager() {
   const { data: session } = useSession()

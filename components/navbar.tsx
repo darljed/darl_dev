@@ -5,10 +5,10 @@ import { useRouter, usePathname } from "next/navigation"
 import { useSession, signOut } from "next-auth/react"
 import Image from "next/image"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { Button } from "./ui/button"
+import { ThemeToggle } from "./theme-toggle"
 import { motion } from "framer-motion"
-import { canAccessAdmin } from "@/lib/permissions"
+import { canAccessAdmin } from "../lib/permissions"
 import { Menu, X } from "lucide-react"
 
 export function Navbar() {
