@@ -2,9 +2,8 @@
 
 import { notFound } from "next/navigation"
 import { useEffect, useState } from "react"
-import { prisma } from "@/lib/prisma"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "../../../components/ui/card"
+import { Button } from "../../../components/ui/button"
 import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import MarkdownPreview from "@uiw/react-markdown-preview"
