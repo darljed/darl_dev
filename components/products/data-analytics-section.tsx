@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "./ui/button";
-import { Card, CardContent } from "./ui/card";
+import { Button } from "../ui/button";
+import { Card, CardContent } from "../ui/card";
 import { BarChart3, LineChart, Database, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 
