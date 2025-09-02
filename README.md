@@ -91,11 +91,11 @@ A modern, full-featured content management system built with Next.js 15, TypeScr
 
 5. **Database Setup**
    ```bash
-   # Generate Prisma client
-   npx prisma generate
+   # Generate Prisma client (runs automatically via postinstall)
+   npm install
    
    # Create and migrate database
-   npx prisma db push
+   npm run db:push
    
    # Seed admin user
    npm run db:seed
@@ -155,8 +155,10 @@ AWS_S3_BUCKET="your-bucket-name"
 
 2. **Run Migrations**
    ```bash
-   npx prisma migrate deploy
-   npx prisma generate
+   # Deploy migrations (production-safe)
+   npm run db:migrate:deploy
+   
+   # Seed admin user
    npm run db:seed
    ```
 
@@ -165,12 +167,19 @@ AWS_S3_BUCKET="your-bucket-name"
 ### Build and Deploy
 
 ```bash
-# Build the application
+# Build the application (automatically runs migrations)
 npm run build
 
 # Start production server
 npm start
 ```
+
+**Note**: The build script automatically:
+1. Applies pending database migrations (`prisma migrate deploy`)
+2. Generates the Prisma client
+3. Builds the Next.js application
+
+This ensures your database is always up-to-date with your application code.
 
 ## Configuration Guides
 
@@ -250,13 +259,21 @@ DATABASE_URL="postgresql://username:password@host:port/database"
 
 ## Available Scripts
 
+### Development
 - `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm start` - Start production server
 - `npm run lint` - Run ESLint
-- `npm run db:push` - Push schema changes to database
-- `npm run db:migrate` - Run database migrations
+
+### Production
+- `npm run build` - Build for production (includes automatic database migration)
+- `npm start` - Start production server
+- `npm run postinstall` - Generate Prisma client (runs automatically after npm install)
+
+### Database Management
+- `npm run db:push` - Push schema changes to database (development)
+- `npm run db:migrate:dev` - Create and apply new migration (development)
+- `npm run db:migrate:deploy` - Apply pending migrations (production)
 - `npm run db:seed` - Seed database with admin user
+- `npm run db:reset` - Reset database and reseed (development)
 - `npm run db:studio` - Open Prisma Studio
 
 ## User Interface Features
@@ -304,9 +321,8 @@ npm run dev
 rm -rf node_modules package-lock.json
 npm install --legacy-peer-deps
 
-# Reset database
-npx prisma db push --force-reset
-npm run db:seed
+# Reset database (development only)
+npm run db:reset
 ```
 
 ### Hydration Issues (iPad/Mobile)
@@ -454,5 +470,13 @@ This application can be deployed on:
 - Set up PostgreSQL database for production
 - Configure SMTP for email functionality
 - Set up AWS S3 for file uploads (optional)
+- Database migrations run automatically during build
+- Ensure `DATABASE_URL` is set before deployment
+
+### Deployment Workflow
+1. Set environment variables (especially `DATABASE_URL`)
+2. Run `npm install` (generates Prisma client via postinstall)
+3. Run `npm run build` (applies migrations and builds app)
+4. Run `npm start` (starts production server)
 
 Make sure to configure environment variables and database connections for your chosen platform.
