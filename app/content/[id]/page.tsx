@@ -89,6 +89,15 @@ export default function BlogPage({ params }: BlogPageProps) {
             />
           </CardContent>
         </Card>
+
+        <div className="flex text-center justify-center flex-col gap-2 mt-10 max-w-2xl m-auto">
+          <p>Let's talk! We want to help your business grow.</p>
+          <Button asChild>
+            <Link href="/#contact">
+              <span>Get in touch</span>
+            </Link>
+          </Button>
+        </div>
       </div>
     </div>
   )
