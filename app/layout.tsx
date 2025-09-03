@@ -74,38 +74,6 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
   },
   themeColor: "#0f172a",
-}  ],
-  openGraph: {
-    title: "Darl | Building Solutions That Make a Difference",
-    description:
-      "Modern Tech. Creative Minds. Smarter Solutions. Get started with Darl today.",
-    url: "https://darl.dev",
-    siteName: "Darl",
-    images: [
-      {
-        url: "https://darl.dev/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Darl - Building Solutions That Make a Difference",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Darl | Building Solutions That Make a Difference",
-    description:
-      "Empowering small businesses with automation, AI, and modern web solutions. Start your journey with Darl today.",
-    images: ["https://darl.dev/og-image.png"],
-  },
-  alternates: {
-    canonical: "https://darl.dev",
-  },
-  icons: {
-    icon: "/favicon.ico",
-  },
-  themeColor: "#0f172a",
 }
 
 export default function RootLayout({
