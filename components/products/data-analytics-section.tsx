@@ -65,9 +65,9 @@ export function DataAnalyticsSection() {
         </div>
 
         {/* CTA */}
-        <Link href="#contact">
+        <Link href="/#contact">
           <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-xl">
-            Book a Consultation
+            Inquire now
           </Button>
         </Link>
       </div>
