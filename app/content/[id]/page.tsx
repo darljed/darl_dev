@@ -85,7 +85,7 @@ export default function BlogPage({ params }: BlogPageProps) {
             <MarkdownPreview 
               source={blog.content}
               style={{ backgroundColor: 'transparent' }}
-              wrapperElement={{ "data-color-mode" : theme }}
+              wrapperElement={{ 'data-color-mode': theme === 'dark' ? 'dark' : 'light'}}
             />
           </CardContent>
         </Card>
