@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "../../../components/ui/card"
 import { Button } from "../../../components/ui/button"
 import { ArrowLeft } from "lucide-react"
+import { useTheme } from "next-themes"
 import Link from "next/link"
 import MarkdownPreview from "@uiw/react-markdown-preview"
 
@@ -16,6 +17,7 @@ export default function BlogPage({ params }: BlogPageProps) {
   const [blog, setBlog] = useState<any>(null)
   const [loading, setLoading] = useState(true)
   const [id, setId] = useState<string>('')
+  const { theme } = useTheme()
 
   useEffect(() => {
     params.then(({ id }) => {
@@ -49,7 +51,6 @@ export default function BlogPage({ params }: BlogPageProps) {
   }
 
 
-
   return (
     <div className="container py-16">
       <div className="max-w-4xl mx-auto">
@@ -80,10 +81,11 @@ export default function BlogPage({ params }: BlogPageProps) {
             </div>
           </CardHeader>
           
-          <CardContent>
+          <CardContent className="text-muted-foreground">
             <MarkdownPreview 
               source={blog.content}
               style={{ backgroundColor: 'transparent' }}
+              wrapperElement={{ "data-color-mode" : theme }}
             />
           </CardContent>
         </Card>
